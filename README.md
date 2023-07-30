@@ -1,3 +1,3 @@
 # Weather App
 
-A react web application that tells the use the weather of their current location
+A web application that tells the user the weather based on their current location
