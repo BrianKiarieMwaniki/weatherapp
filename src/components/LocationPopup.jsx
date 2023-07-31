@@ -1,8 +1,12 @@
 import React from 'react'
+import { getLocation } from "../services/location";
 
-export const LocationPopup = ({onCancel}) => {
+
+export const LocationPopup = ({onCancel, onAllow}) => {
     const handleAllow = () => {
+        getLocation();
 
+        onAllow();
     };
     return (
       <div className="popup">
