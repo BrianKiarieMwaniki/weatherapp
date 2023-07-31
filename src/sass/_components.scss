@@ -1,8 +1,6 @@
 .popup{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+    max-width: 35rem;
+    margin: .75rem;
     border-radius: 4px;
     padding:1rem 2rem;
     box-shadow: var(--shadow-1);

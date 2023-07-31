@@ -13,7 +13,7 @@ export const Home = () => {
     }
   }, []);
 
-  const handlePopupCancel = () => {
+  const handlePopupClose = () => {
     setShowLocationPopup(false);
   };
 
@@ -21,7 +21,7 @@ export const Home = () => {
     <div className="home">
       {showLocationPopup && (
         <LocationPopup
-          onCancel={handlePopupCancel}
+          onCancel={handlePopupClose}
           onAllow={() => setShowLocationPopup(false)}
         />
       )}
