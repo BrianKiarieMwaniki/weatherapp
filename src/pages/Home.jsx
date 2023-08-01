@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import LocationPopup from "../components/LocationPopup";
+import { getLocation } from "../services/location";
 
 export const Home = () => {
   const [showLocationPopup, setShowLocationPopup] = useState(false);
 
   useEffect(() => {
-    const latitude = localStorage.getItem("latitude");
-    const longitude = localStorage.getItem("longitude");
+    const {latitude, longitude} = getLocation();
 
     if (latitude === null && longitude === null) {
       setShowLocationPopup(true);
@@ -27,6 +27,8 @@ export const Home = () => {
           />
         </div>
       )}
+
+      <p style={{fontSize: '10rem'}}>This is the home page I guess</p>
     </div>
   );
 };

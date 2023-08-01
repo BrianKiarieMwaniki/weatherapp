@@ -1,5 +1,5 @@
 import React from "react";
-import { getLocation } from "../services/location";
+import { setLocation } from "../services/location";
 import { motion } from "framer-motion";
 
 export const LocationPopup = ({ onCancel, onAllow }) => {
@@ -27,7 +27,7 @@ export const LocationPopup = ({ onCancel, onAllow }) => {
   };
 
   const handleAllow = () => {
-    getLocation();
+    setLocation();
 
     onAllow();
   };
