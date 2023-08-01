@@ -20,10 +20,12 @@ export const Home = () => {
   return (
     <div className="home">
       {showLocationPopup && (
-        <LocationPopup
-          onCancel={handlePopupClose}
-          onAllow={() => setShowLocationPopup(false)}
-        />
+        <div className="popup-container">
+          <LocationPopup
+            onCancel={handlePopupClose}
+            onAllow={() => setShowLocationPopup(false)}
+          />
+        </div>
       )}
     </div>
   );
