@@ -27,7 +27,7 @@ export const RealTimeWeather = () => {
   return (
     <div>
       <p>{description}</p>
-      <img src={icon} />
+      <img src={icon} alt="weather icon"/>
     </div>
   );
 };
