@@ -1,5 +1,5 @@
 import './App.css';
-import './sass/main.scss';
+import './assets/sass/main.scss';
 import { Home } from './pages/Home';
 
 function App() {
