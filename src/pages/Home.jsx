@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LocationPopup from "../components/LocationPopup";
 import { getLocation } from "../services/location";
+import { RealTimeWeather } from "../components/RealTimeWeather";
 
 export const Home = () => {
   const [showLocationPopup, setShowLocationPopup] = useState(false);
@@ -28,7 +29,8 @@ export const Home = () => {
         </div>
       )}
 
-      <p style={{fontSize: '10rem'}}>This is the home page I guess</p>
+      {!showLocationPopup && <RealTimeWeather/>}
+
     </div>
   );
 };
