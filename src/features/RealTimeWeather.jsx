@@ -43,12 +43,12 @@ export const RealTimeWeather = () => {
   const { windSpeed, windDirection } = windInfo;
   return (
     <div className="real-time">
-      <div className="real-time__location">
-        <p>{name}</p>
-        <p>{region}</p>
-        <p>{country}</p>
-      </div>
       <div className="real-time__condition">
+        <div className="real-time__location">
+          <p>{name}</p>
+          <p>{region}</p>
+          <p>{country}</p>
+        </div>
         <p>{description}</p>
         <img src={icon} alt="weather icon" />
       </div>
