@@ -1,7 +1,12 @@
-:root{
-    --color-grey-1: #c7c7c7;
-    --popup-font-color: #5c5c5c;
-    --shadow-1: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+:root {
+  --color-primary: #00aaf5;
+  --color-secondary: #42bef5;
+  --color-accent: #0c91cc;
+  --color-grey-1: #c7c7c7;
+  --font-color: #eaeaea;
+  --popup-font-color: #5c5c5c;
+  --shadow-1: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --shadow-1-light: rgba(255, 255, 255, 0.24) 0px 3px 8px;
 }
 * {
   margin: 0;
@@ -16,14 +21,14 @@
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%;  
+  font-size: 62.5%;
 }
 
-body{
-    height: 100vh;
-    font-family: "Lato", sans-serif;
-
-    & > #root{
-        height: 100%;
-    }
+body {
+  font-family: "Malonet", "Queensides", sans-serif;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+  
 }
