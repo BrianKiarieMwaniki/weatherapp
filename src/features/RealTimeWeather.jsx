@@ -4,6 +4,8 @@ import { getLocation } from "../functions/location";
 import { getTodaysDate } from "../functions/date";
 
 export const RealTimeWeather = () => {
+  const useMetricSystem = false;
+  const useFahrenheit = false;
   const [condition, setCondition] = useState({ description: "", icon: " " });
   const [location, setLocation] = useState({
     name: "",
@@ -57,8 +59,12 @@ export const RealTimeWeather = () => {
         setCloud(cloud);
       }
     };
-
     getWeather();
+
+    //pull data after every hour
+    const pollingInterval = setInterval(getWeather, 3600000);
+
+    return () => clearInterval(pollingInterval);
   }, []);
   const { name, region, country } = location;
   const { description, icon } = condition;
@@ -84,7 +90,9 @@ export const RealTimeWeather = () => {
               </svg>
               <div className="info">
                 <span className="text">Feels like</span>
-                <span className="value">{tempC}&deg;</span>
+                <span className="value">
+                  {useFahrenheit ? `${tempF} \u00B0F` : `${tempC}\u00B0C`}
+                </span>
               </div>
             </div>
             <div className="real-time__condition-item">
@@ -94,7 +102,10 @@ export const RealTimeWeather = () => {
               <div className="info">
                 <span className="text">Wind</span>
                 <span className="value">
-                  {windDirection}&nbsp;{windSpeed} km/h
+                  {windDirection}&nbsp;
+                  {useMetricSystem
+                    ? `${windSpeed} km/h`
+                    : `${windSpeedMph} m/h`}
                 </span>
               </div>
             </div>
