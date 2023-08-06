@@ -58,12 +58,10 @@
 }
 
 .real-time {
-  height: 100%;
-  margin: 4rem 4rem;
+  height: 100vh;
   display: flex;
   font-family: "Lato", sans-serif;
   color: var(--font-color);
-  border-radius: 4px;
   background: linear-gradient(
     270deg,
     var(--color-accent) 20%,
@@ -71,106 +69,135 @@
     var(--color-secondary) 100%
   );
   box-shadow: var(--shadow-1);
-  overflow:  hidden auto;
+  overflow: hidden auto;
 
-  @media(max-width: 1024px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
   }
-  @media(max-width: 767px){
-    margin: 2rem;
-  }
-
-  @media (max-width: 600px) {
-    margin: 0;
-  }
- 
 
   &__main {
     flex: 4;
     display: flex;
     flex-direction: column;
     padding: 2rem 4rem;
+
+    @media (max-width: 767px) {
+      padding: 1rem 2rem;
+    }
   }
 
   &__location {
     float: left;
+    display: flex;
+    flex-direction: column;
     text-align: justify;
-    font-family: 'Malonet';
+    font-family: "Malonet";
     font-size: 1.6rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 767px) {
+      flex-direction: row;
+      justify-content: center;
+      column-gap: 0.4rem;
+    }
+  }
+  &__date {
+    align-self: center;
+    font-family: "Queensides";
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 
   &__condition {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
     font-size: 2.4rem;
     font-weight: 700;
     letter-spacing: 2px;
 
-    &--img {
-      width: 20rem;
-      margin-top: 4rem;
-    }
-  }
-
-  &__cards {
-    flex: 1;
-    float: right;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding: 2rem 4rem;
-
-    @media(max-width: 1024px){
-      justify-content: space-around;
-    }
-
-    @media(max-width: 767px) {
-      flex-direction: column;
+    &-items {
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-    }
-  }
-  &__card {
-    width: 18rem;
-    height: 18rem;
-    text-align: justify;
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    padding: 2rem;
-    border-radius: 4px;
-    box-shadow: var(--shadow-1);
+      margin-bottom: 2rem;
 
-    @media (max-width:  767px) {
-      width: 100%;      
-    }
-
-    & .title {
-      text-transform: uppercase;
-      font-weight:900;
-      letter-spacing: 0.125rem;
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.4) 35%,
-        rgba(255, 255, 255, 0.81) 100%
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 0;
-    }
-
-    & p {
-      &:not(.title) {
-        margin: auto;
-        text-align: center;
+      @media (max-width: 481px) {
+        flex-direction: column;        
       }
+    }
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      position: relative;
+
+      @media (max-width: 767px) {
+        flex-basis: 50%;
+        justify-content: flex-start;
+        padding: 1rem 0;
+      }
+
+      @media (max-width: 481px) {
+        flex-basis: 0;        
+      }
+
+      & .icon {
+        fill: #fff;
+        width: 4rem;
+        height: 4rem;
+        margin-right: .5rem;
+      }
+
+      & .info {
+        display: flex;
+        flex-direction: column;
+        text-align: justify;
+        margin-right: 2rem;
+
+        @media (max-width: 767px) {
+          margin: 0;
+        }
+      }
+
+      & .text {
+        font-size: 1.2rem;
+        font-weight: 300;
+      }
+
+      & .value {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+
       &:not(:last-child) {
-        margin-bottom: 0.75rem;
+        margin-right: 2rem;
+
+        @media (max-width: 767px) {
+          margin: 0;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 85%;
+          background-color: #dbdbdb;
+
+          @media (max-width: 767px) {
+            display: none;
+          }
+        }
       }
+    }
+
+    &--img {
+      width: 10rem;
     }
   }
 }
