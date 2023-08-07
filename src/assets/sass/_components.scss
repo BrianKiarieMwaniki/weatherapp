@@ -61,7 +61,6 @@
   display: flex;
   font-family: "Lato", sans-serif;
   color: var(--font-color);
-  
 
   @media (max-width: 1024px) {
     flex-direction: column;
@@ -117,7 +116,7 @@
       margin-bottom: 2rem;
 
       @media (max-width: 481px) {
-        flex-direction: column;        
+        flex-direction: column;
       }
     }
 
@@ -133,14 +132,14 @@
       }
 
       @media (max-width: 481px) {
-        flex-basis: 0;        
+        flex-basis: 0;
       }
 
       & .icon {
         fill: #fff;
         width: 4rem;
         height: 4rem;
-        margin-right: .5rem;
+        margin-right: 0.5rem;
       }
 
       & .info {
@@ -190,6 +189,136 @@
 
     &--img {
       width: 10rem;
+    }
+  }
+}
+
+.forecast {
+  width: 100%;
+}
+
+.forecastday {
+  color: var(--font-color);
+  position: relative;
+  padding-bottom: 1rem;
+  &__date {
+    font-family: "Malonet";
+    font-size: 2rem;
+  }
+
+  &__condition {
+    padding: 1rem 0;
+    padding-bottom: 0;
+    & .temp {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.75rem;
+
+      &--avg {
+        font-size: 2.7rem;
+      }
+
+      &--min {
+        font-size: 1.2rem;
+      }
+    }
+
+    & .description {
+      font-size: 1.2rem;
+    }
+
+    & .icon {
+      display: inline-block;
+      & .img {
+        width: 8rem;
+      }
+    }
+  }
+
+  &__periods-btn{
+    border: none;
+    height: 3rem;
+    width: 3rem;
+    text-align: center;
+    background-color: transparent;
+
+    & .icon{
+      fill: var(--font-color);
+      height: 2.25rem;
+      width: 2.25rem;
+      cursor: pointer;
+
+      transition: all .4s ease-in-out;
+    }
+
+    & .rotate{
+      transform: rotate(180deg);
+    }
+  }
+  &__periods {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 481px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, minmax(10rem, min-content));
+      gap: 0.5rem;
+    }
+  }
+}
+
+.forecast-period {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  justify-content: center;
+
+  & .name {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 481px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  & .temp {
+    font-size: 1.8rem;
+
+    @media (max-width: 481px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  & .description {
+    font-size: 1.2rem;
+
+    @media (max-width: 481px) {
+      font-size: 1rem;
+    }
+  }
+
+  & .icon {
+    & .img {
+      @media (max-width: 481px) {
+        width: 4rem;
+      }
+    }
+  }
+
+  & .rain {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    &--icon {
+      fill: #fff;
+      width: 2rem;
+      height: 2rem;
     }
   }
 }

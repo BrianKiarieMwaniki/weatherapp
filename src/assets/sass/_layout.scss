@@ -13,4 +13,14 @@
   box-shadow: var(--shadow-1);
   overflow: hidden auto;
   position: relative;
+
+  &::-webkit-scrollbar{
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    width: 4rem;
+    height: 4rem;
+  }
 }

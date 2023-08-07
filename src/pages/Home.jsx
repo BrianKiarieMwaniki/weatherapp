@@ -5,6 +5,7 @@ import { getLocation } from "../functions/location";
 import { RealTimeWeather } from "../features/RealTimeWeather";
 import { useQuery } from "react-query";
 import { calculateTimeUntilNextPoll } from "../functions/polling";
+import { Forecast } from "../features/Forecast";
 
 export const Home = () => {
   const [showLocationPopup, setShowLocationPopup] = useState(false);
@@ -19,16 +20,15 @@ export const Home = () => {
     return await getWeatherForecast(latitude, longitude, 7);
   };
 
-  const { data,refetch , isFetched } = useQuery("forecast", fetchForecast, {
+  const { data, refetch, isFetched } = useQuery("forecast", fetchForecast, {
     refetchInterval: () => calculateTimeUntilNextPoll(),
   });
 
-  if(!isFetched)
-  {return (
-    <div>Error</div>
-    )}
+  if (!isFetched) {
+    return <div>Error</div>;
+  }
 
-  const { location, current } = data;
+  const { location, current, forecast} = data;
 
   const handlePopupClose = () => {
     setShowLocationPopup(false);
@@ -42,7 +42,10 @@ export const Home = () => {
       onAllow={() => setShowLocationPopup(false)}
     />
   ) : (
-    <RealTimeWeather location={location} currentWeather={current} />
+    <React.Fragment>
+      <RealTimeWeather location={location} currentWeather={current} />
+      <Forecast forecast={forecast}/>
+    </React.Fragment>
   );
 
   return <div className="home">{currentView}</div>;
