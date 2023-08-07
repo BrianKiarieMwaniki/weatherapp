@@ -16,6 +16,7 @@ export const RealTimeWeather = (props) => {
     wind_dir: windDirection,
     humidity,
     cloud,
+    precip_in:rain
   } = current;
 
   const { name, region, country } = location;
@@ -75,6 +76,15 @@ export const RealTimeWeather = (props) => {
               <div className="info">
                 <span className="text">Cloud Cover</span>
                 <span className="value">{cloud}%</span>
+              </div>
+            </div>
+            <div className="real-time__condition-item">
+              <svg className="icon">
+                <use xlinkHref="/symbols.svg#icon-rain"></use>
+              </svg>
+              <div className="info">
+                <span className="text">Rain</span>
+                <span className="value">{rain}</span>
               </div>
             </div>
           </div>
