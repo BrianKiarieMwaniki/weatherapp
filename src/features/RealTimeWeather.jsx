@@ -1,69 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { getWeatherForecast } from "../api/weatherService";
-import { getLocation } from "../functions/location";
+import React from "react";
 import { getTodaysDate } from "../functions/date";
 
-export const RealTimeWeather = () => {
-  const [condition, setCondition] = useState({ description: "", icon: " " });
-  const [location, setLocation] = useState({
-    name: "",
-    region: "",
-    country: "",
-  });
-  const [tempInfo, setTempInfo] = useState({ tempC: 0, tempF: 0 });
-  const [windInfo, setWindInfo] = useState({
-    windSpeedKph: 0,
-    windSpeedMph: 0,
-    windDirection: "",
-  });
+export const RealTimeWeather = (props) => {
+  
+  const {location, currentWeather: current} = props;
+  const useMetricSystem = false;
+  const useFahrenheit = false;  
 
-  const [humidity, setHumidity] = useState(0);
-  const [cloud, setCloud] = useState(0);
+  const {
+    condition,
+    temp_c: tempC,
+    temp_f: tempF,
+    wind_kpH: windSpeed,
+    wind_mph: windSpeedMph,
+    wind_dir: windDirection,
+    humidity,
+    cloud,
+  } = current;
 
-  useEffect(() => {
-    const { latitude, longitude } = getLocation();
-    const getWeather = async () => {
-      const { location, current } = await getWeatherForecast(
-        latitude,
-        longitude,
-        7
-      );
-
-      if (location) {
-        const { name, region, country } = location;
-        setLocation({ name, region, country });
-      }
-
-      if (current) {
-        const {
-          condition: { text, icon },
-          temp_c: tempC,
-          temp_f: tempF,
-          wind_kph: windSpeed,
-          wind_mph: windSpeedMph,
-          wind_dir: windDirection,
-          humidity,
-          cloud,
-        } = current;
-
-        setCondition({ description: text, icon });
-        setTempInfo({ tempC, tempF });
-        setWindInfo({
-          windSpeedKph: windSpeed,
-          windSpeedMph,
-          windDirection,
-        });
-        setHumidity(humidity);
-        setCloud(cloud);
-      }
-    };
-
-    getWeather();
-  }, []);
   const { name, region, country } = location;
   const { description, icon } = condition;
-  const { tempC, tempF } = tempInfo;
-  const { windSpeedKph: windSpeed, windSpeedMph, windDirection } = windInfo;
 
   return (
     <div className="real-time">
@@ -84,7 +40,9 @@ export const RealTimeWeather = () => {
               </svg>
               <div className="info">
                 <span className="text">Feels like</span>
-                <span className="value">{tempC}&deg;</span>
+                <span className="value">
+                  {useFahrenheit ? `${tempF} \u00B0F` : `${tempC}\u00B0C`}
+                </span>
               </div>
             </div>
             <div className="real-time__condition-item">
@@ -94,7 +52,10 @@ export const RealTimeWeather = () => {
               <div className="info">
                 <span className="text">Wind</span>
                 <span className="value">
-                  {windDirection}&nbsp;{windSpeed} km/h
+                  {windDirection}&nbsp;
+                  {useMetricSystem
+                    ? `${windSpeed} km/h`
+                    : `${windSpeedMph} m/h`}
                 </span>
               </div>
             </div>

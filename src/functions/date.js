@@ -6,7 +6,7 @@ export const getTodaysDate = () => {
   var options = {
     weekday: "long",
     day: "numeric",
-    month: "long"
+    month: "long",
   };
 
   // Create a date formatter with the specified options
@@ -16,4 +16,8 @@ export const getTodaysDate = () => {
   var formattedDate = dateFormatter.format(today);
 
   return formattedDate;
-}
+};
+
+export const getTimeFromDateStr = (date) => {
+  return date.split(" ")[1];
+};
