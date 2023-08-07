@@ -1,75 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { getWeatherForecast } from "../api/weatherService";
 import { getLocation } from "../functions/location";
 import { getTodaysDate } from "../functions/date";
+import { useQuery } from "react-query";
+import { calculateTimeUntilNextPoll } from "../functions/polling";
 
 export const RealTimeWeather = () => {
   const useMetricSystem = false;
   const useFahrenheit = false;
-  const [condition, setCondition] = useState({ description: "", icon: " " });
-  const [location, setLocation] = useState({
-    name: "",
-    region: "",
-    country: "",
-  });
-  const [tempInfo, setTempInfo] = useState({ tempC: 0, tempF: 0 });
-  const [windInfo, setWindInfo] = useState({
-    windSpeedKph: 0,
-    windSpeedMph: 0,
-    windDirection: "",
-  });
 
-  const [humidity, setHumidity] = useState(0);
-  const [cloud, setCloud] = useState(0);
-
-  useEffect(() => {
+  const fetchForecast = async () => {
     const { latitude, longitude } = getLocation();
-    const getWeather = async () => {
-      const { location, current } = await getWeatherForecast(
-        latitude,
-        longitude,
-        7
-      );
+    return await getWeatherForecast(latitude, longitude, 7);
+  };
 
-      if (location) {
-        const { name, region, country } = location;
-        setLocation({ name, region, country });
-      }
+  const { data } = useQuery("forecast", fetchForecast, {
+    refetchInterval: () => calculateTimeUntilNextPoll(),
+  });
 
-      if (current) {
-        const {
-          condition: { text, icon },
-          temp_c: tempC,
-          temp_f: tempF,
-          wind_kph: windSpeed,
-          wind_mph: windSpeedMph,
-          wind_dir: windDirection,
-          humidity,
-          cloud,
-        } = current;
+  const { location, current } = data;
+  const {
+    condition,
+    temp_c: tempC,
+    temp_f: tempF,
+    wind_kpH: windSpeed,
+    wind_mph: windSpeedMph,
+    wind_dir: windDirection,
+    humidity,
+    cloud,
+  } = current;
 
-        setCondition({ description: text, icon });
-        setTempInfo({ tempC, tempF });
-        setWindInfo({
-          windSpeedKph: windSpeed,
-          windSpeedMph,
-          windDirection,
-        });
-        setHumidity(humidity);
-        setCloud(cloud);
-      }
-    };
-    getWeather();
-
-    //pull data after every hour
-    const pollingInterval = setInterval(getWeather, 3600000);
-
-    return () => clearInterval(pollingInterval);
-  }, []);
   const { name, region, country } = location;
   const { description, icon } = condition;
-  const { tempC, tempF } = tempInfo;
-  const { windSpeedKph: windSpeed, windSpeedMph, windDirection } = windInfo;
 
   return (
     <div className="real-time">
