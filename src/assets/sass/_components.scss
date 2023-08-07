@@ -20,7 +20,7 @@
     left: 0;
     z-index: 10;
 
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(8px) brightness(1.2);
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -58,18 +58,10 @@
 }
 
 .real-time {
-  height: 100vh;
   display: flex;
   font-family: "Lato", sans-serif;
   color: var(--font-color);
-  background: linear-gradient(
-    270deg,
-    var(--color-accent) 20%,
-    var(--color-primary) 65%,
-    var(--color-secondary) 100%
-  );
-  box-shadow: var(--shadow-1);
-  overflow: hidden auto;
+  
 
   @media (max-width: 1024px) {
     flex-direction: column;

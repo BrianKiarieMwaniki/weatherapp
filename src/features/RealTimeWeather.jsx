@@ -1,24 +1,12 @@
 import React from "react";
-import { getWeatherForecast } from "../api/weatherService";
-import { getLocation } from "../functions/location";
 import { getTodaysDate } from "../functions/date";
-import { useQuery } from "react-query";
-import { calculateTimeUntilNextPoll } from "../functions/polling";
 
-export const RealTimeWeather = () => {
+export const RealTimeWeather = (props) => {
+  
+  const {location, currentWeather: current} = props;
   const useMetricSystem = false;
-  const useFahrenheit = false;
+  const useFahrenheit = false;  
 
-  const fetchForecast = async () => {
-    const { latitude, longitude } = getLocation();
-    return await getWeatherForecast(latitude, longitude, 7);
-  };
-
-  const { data } = useQuery("forecast", fetchForecast, {
-    refetchInterval: () => calculateTimeUntilNextPoll(),
-  });
-
-  const { location, current } = data;
   const {
     condition,
     temp_c: tempC,
