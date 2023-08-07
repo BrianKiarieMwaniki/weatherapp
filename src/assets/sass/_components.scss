@@ -61,7 +61,6 @@
   display: flex;
   font-family: "Lato", sans-serif;
   color: var(--font-color);
-  
 
   @media (max-width: 1024px) {
     flex-direction: column;
@@ -117,7 +116,7 @@
       margin-bottom: 2rem;
 
       @media (max-width: 481px) {
-        flex-direction: column;        
+        flex-direction: column;
       }
     }
 
@@ -133,14 +132,14 @@
       }
 
       @media (max-width: 481px) {
-        flex-basis: 0;        
+        flex-basis: 0;
       }
 
       & .icon {
         fill: #fff;
         width: 4rem;
         height: 4rem;
-        margin-right: .5rem;
+        margin-right: 0.5rem;
       }
 
       & .info {
@@ -190,6 +189,46 @@
 
     &--img {
       width: 10rem;
+    }
+  }
+}
+
+.forecast {
+  width: 100%;
+}
+
+.forecastday {
+  color: var(--font-color);
+  &__date {
+    font-family: "Malonet";
+    font-size: 2rem;
+  }
+
+  &__condition {
+    padding: 1rem 0;
+    & .temp {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.75rem;
+
+      &--avg {
+        font-size: 2.7rem;
+      }
+
+      &--min {
+        font-size: 1.2rem;
+      }
+    }
+
+    & .description {
+      font-size: 1.2rem;
+    }
+
+    & .icon {
+      display: inline-block;
+      & .img {
+        width: 8rem;
+      }
     }
   }
 }
