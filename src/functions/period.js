@@ -104,7 +104,6 @@ const getIcon = (arrayOfObjects, condition, period) => {
   }
   obj = arrayOfObjects.find((c) => c.condition.text === condition);
 
-  console.log(obj);
   const {
     condition: { icon },
   } = obj;

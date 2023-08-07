@@ -1,5 +1,5 @@
 import React from "react";
-export const ForecastPeriod = ({ period, isShown }) => {
+export const ForecastPeriod = ({ period}) => {
   const {
     name,
     condition,
@@ -13,9 +13,8 @@ export const ForecastPeriod = ({ period, isShown }) => {
 
   return (
     <React.Fragment>
-      {isShown && (
         <div className="forecast-period">
-          <p className=".name">{name}</p>
+          <p className="name">{name}</p>
           <p className="temp">
             {useFahrenheit ? `${avgTempF} \u00B0F` : `${avgTempC}\u00B0C`}
           </p>
@@ -27,12 +26,9 @@ export const ForecastPeriod = ({ period, isShown }) => {
             <svg className="rain--icon">
               <use xlinkHref="/symbols.svg#icon-rain"></use>
             </svg>
-            <span className="rain--text">{avgRainPerct}</span>
+            <span className="rain--text">{avgRainPerct}%</span>
           </p>
-        </div>
-      )}
+        </div>      
     </React.Fragment>
   );
 };
-
-export default ForecastPeriod;
