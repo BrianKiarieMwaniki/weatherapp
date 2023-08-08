@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from 'framer-motion';
 export const ForecastPeriod = ({ period}) => {
   const {
     name,
@@ -11,9 +12,22 @@ export const ForecastPeriod = ({ period}) => {
 
   const useFahrenheit = false;
 
+  const animationVariants = {
+    hidden: { opacity: 0 , y: 120},
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        type: "easeIn",
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
     <React.Fragment>
-        <div className="forecast-period">
+        <motion.div className="forecast-period" variants={animationVariants} initial="hidden" animate="visible">
           <p className="name">{name}</p>
           <p className="temp">
             {useFahrenheit ? `${avgTempF} \u00B0F` : `${avgTempC}\u00B0C`}
@@ -28,7 +42,7 @@ export const ForecastPeriod = ({ period}) => {
             </svg>
             <span className="rain--text">{avgRainPerct}%</span>
           </p>
-        </div>      
+        </motion.div>      
     </React.Fragment>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import { setLocation } from "../functions/location";
 import { motion } from "framer-motion";
 
 export const LocationPopup = ({ onCancel, onAllow }) => {
@@ -26,11 +25,6 @@ export const LocationPopup = ({ onCancel, onAllow }) => {
     },
   };
 
-  const handleAllow = () => {
-    setLocation();
-
-    onAllow();
-  };
   return (
     <div className="popup-container">
       <motion.div
@@ -42,14 +36,14 @@ export const LocationPopup = ({ onCancel, onAllow }) => {
       >
         <div className="popup-content">
           <p className="popup-content__text">
-            Allow <strong>Weather App</strong> to get your location.
+            Allow <strong>Weather</strong> to get your location.
           </p>
         </div>
         <div className="popup-actions">
           <button className="popup-actions__btn" onClick={onCancel}>
             Cancel
           </button>
-          <button className="popup-actions__btn" onClick={handleAllow}>
+          <button className="popup-actions__btn" onClick={onAllow}>
             Allow
           </button>
         </div>
