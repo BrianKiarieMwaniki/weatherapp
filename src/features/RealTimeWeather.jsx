@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { getTodaysDate } from "../functions/date";
+import { SettingsContext } from "../contexts/SettingsContext";
 
 export const RealTimeWeather = (props) => {
   
   const {location, currentWeather: current} = props;
-  const useMetricSystem = false;
-  const useFahrenheit = false;  
+  const {useMetricSystem, useFahrenheit} = useContext(SettingsContext);
 
   const {
     condition,
     temp_c: tempC,
     temp_f: tempF,
-    wind_kpH: windSpeed,
+    wind_kph: windSpeed,
     wind_mph: windSpeedMph,
     wind_dir: windDirection,
     humidity,
