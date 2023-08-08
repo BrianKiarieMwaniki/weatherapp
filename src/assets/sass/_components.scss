@@ -235,23 +235,23 @@
     }
   }
 
-  &__periods-btn{
+  &__periods-btn {
     border: none;
     height: 3rem;
     width: 3rem;
     text-align: center;
     background-color: transparent;
 
-    & .icon{
+    & .icon {
       fill: var(--font-color);
       height: 2.25rem;
       width: 2.25rem;
       cursor: pointer;
 
-      transition: all .4s ease-in-out;
+      transition: all 0.4s ease-in-out;
     }
 
-    & .rotate{
+    & .rotate {
       transform: rotate(180deg);
     }
   }
@@ -319,6 +319,159 @@
       fill: #fff;
       width: 2rem;
       height: 2rem;
+    }
+  }
+}
+
+.settings {
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 32rem;
+  background-color: var(--font-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: -4px 0px 4px -4px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: -4px 0px 4px -4px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: -4px 0px 4px -4px rgba(0, 0, 0, 0.45);
+
+  &__input{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem ;
+    font-size: 1.5rem;
+    letter-spacing: 0.125rem;
+
+    &:not(:last-child){
+      position: relative;
+
+      &::after{
+        content: "";
+        width: 85%;
+        height: 2px;
+        border-radius: 50%;
+        position: absolute;
+        bottom:0;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+        
+      }
+    }
+  }
+
+  &__btn {
+    &-open {
+      position: absolute;
+      fill: var(--color-accent);
+      background-color: var(--font-color);
+      z-index: 10;
+      top: 3rem;
+      right: 2rem;
+      height: 4rem;
+      width: 4rem;
+      border: none;
+      border-radius: 50%;
+      padding: 0.5rem;
+      cursor: pointer;
+
+      &:focus,
+      &:focus-visible,
+      &:visited {
+        border: none !important;
+      }
+    }
+
+    &-close {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: rotate(270deg);
+      height: 3.5rem;
+      width: 3.5rem;
+    }
+  }
+
+  & .checkbox-wrapper {
+    & input[type="checkbox"] {
+      visibility: hidden;
+      display: none;
+    }
+
+    & .toggle {
+      position: relative;
+      display: block;
+      width: 40px;
+      height: 20px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transform: translate3d(0, 0, 0);
+
+      &::before {
+        content: "";
+        position: relative;
+        top: 3px;
+        left: 3px;
+        width: 34px;
+        height: 14px;
+        display: block;
+        background: #9a9999;
+        border-radius: 8px;
+        transition: background 0.2s ease;
+      }
+
+      & span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        display: block;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(154, 153, 153, 0.5);
+        transition: all 0.2s ease;
+
+        &::before {
+          content: "";
+          position: absolute;
+          display: block;
+          margin: -18px;
+          width: 56px;
+          height: 56px;
+          background: rgba(79, 46, 220, 0.5);
+          border-radius: 50%;
+          transform: scale(0);
+          opacity: 1;
+          pointer-events: none;
+        }
+      }
+    }
+
+    & .checkbox:checked + .toggle:before {
+      background: var(--color-primary);
+    }
+
+    & .checkbox:checked + .toggle span {
+      background: var(--color-primary);
+      transform: translateX(20px);
+      transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25),
+        background 0.15s ease;
+      box-shadow: 0 3px 8px rgba(79, 46, 220, 0.2);
+    }
+
+    & .checkbox:checked + .toggle span:before {
+      transform: scale(1);
+      opacity: 0;
+      transition: all 0.4s ease;
     }
   }
 }

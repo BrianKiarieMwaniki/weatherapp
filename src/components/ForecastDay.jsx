@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { getFormattedDate, isTodaysDate } from "../functions/date";
 import { getPeriods } from "../functions/period";
 import {ForecastPeriod} from "./ForecastPeriod";
+import { SettingsContext } from "../contexts/SettingsContext";
 
 export const ForecastDay = (props) => {
   const { forecastDay } = props;
   const [showPeriods, setShowPeriods] = useState(false);
-  const useFahrenheit = false;
+  const {useFahrenheit} = useContext(SettingsContext);
   const {
     date,
     day: {
-      //   maxtemp_c,
-      //   maxtemp_f,
       mintemp_c,
       mintemp_f,
       avgtemp_c: avgTempC,

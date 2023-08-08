@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from 'framer-motion';
+import { SettingsContext } from "../contexts/SettingsContext";
+
 export const ForecastPeriod = ({ period}) => {
   const {
     name,
@@ -10,7 +12,7 @@ export const ForecastPeriod = ({ period}) => {
 
   const { text: description, icon } = condition;
 
-  const useFahrenheit = false;
+  const {useFahrenheit} = useContext(SettingsContext);
 
   const animationVariants = {
     hidden: { opacity: 0 , y: 120},
