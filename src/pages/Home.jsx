@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import LocationPopup from "../features/LocationPopup";
 import { getWeatherForecast } from "../api/weatherService";
-import { getLocation, setLocation } from "../functions/location";
+import { clearSearchCityLocation, getLocation, setLocation } from "../functions/location";
 import { RealTimeWeather } from "../features/RealTimeWeather";
 import { useQuery } from "react-query";
 import { calculateTimeUntilNextPoll } from "../functions/polling";
 import { Forecast } from "../features/Forecast";
+import { SettingsContext } from "../contexts/SettingsContext";
 
 export const Home = () => {
   const [showLocationPopup, setShowLocationPopup] = useState(false);
@@ -42,16 +43,20 @@ export const Home = () => {
     refetch();
   }
 
+  const handleSearchRefetch = () => {
+    refetch();
+    clearSearchCityLocation();
+  };
+
   const currentView = showLocationPopup ? (
-    <LocationPopup
-      onCancel={handlePopupClose}
-      onAllow={handlePopupAccept}
-    />
+    <LocationPopup onCancel={handlePopupClose} onAllow={handlePopupAccept} />
   ) : (
-    <React.Fragment>
-      <RealTimeWeather location={location} currentWeather={current} />
-      <Forecast forecast={forecast}/>
-    </React.Fragment>
+    <SettingsContext.Provider value={{ handleSearchRefetch }}>
+      <React.Fragment>
+        <RealTimeWeather location={location} currentWeather={current} />
+        <Forecast forecast={forecast} />
+      </React.Fragment>
+    </SettingsContext.Provider>
   );
 
   return <div className="home">{currentView}</div>;

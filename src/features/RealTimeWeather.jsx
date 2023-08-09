@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { getTodaysDate } from "../functions/date";
 import { SettingsContext } from "../contexts/SettingsContext";
+import CityTownSearch from "./CityTownSearch";
 
 export const RealTimeWeather = (props) => {
   
@@ -26,9 +27,14 @@ export const RealTimeWeather = (props) => {
     <div className="real-time">
       <div className="real-time__main">
         <div className="real-time__location">
-          <p>{name},</p>
-          <p>{region},</p>
-          <p>{country}</p>
+         <div className="info">
+            <p>{name},</p>
+            {region && <p>{region},</p>}
+            <p>{country}</p>
+         </div>
+         <div className="input-box">
+          <CityTownSearch/>
+         </div>
         </div>
         <div className="real-time__date">
           <p> {getTodaysDate()}</p>
