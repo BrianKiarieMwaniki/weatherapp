@@ -1,15 +1,13 @@
 export const getSettings = () => {
   let jsonSettings = localStorage.getItem("settings");
 
-  let settings = JSON.parse(jsonSettings);
-
-  if(!settings)
+  if(!jsonSettings)
   {
-    setSettings(false, true);
-    getSettings();
+    return {fahrenheit: false, metricSystem: false};
   }
- 
-  return settings;
+
+  let {fahrenheit, metricSystem} = JSON.parse(jsonSettings); 
+  return {fahrenheit, metricSystem};
 };
 
 export const setSettings = (useFahrenheit, useMetricSystem) => {

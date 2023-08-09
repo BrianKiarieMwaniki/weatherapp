@@ -16,9 +16,7 @@ function App() {
 
 
   useEffect(() => {
-    let settings = getSettings();
-
-    if(!settings) settings = getSettings();
+   const settings = getSettings();   
 
     const { fahrenheit, metricSystem } = settings;
 

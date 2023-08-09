@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useEffect } from "react";
 import { SettingsContext } from "./../contexts/SettingsContext";
 import { setSettings } from "./../functions/settings";
-import { motion, useAnimate, usePresence } from "framer-motion";
+import { useAnimate, usePresence } from "framer-motion";
 
 function Setting({ hideSettings }) {
   const {
@@ -51,18 +51,18 @@ function Setting({ hideSettings }) {
         </svg>
         <div className="settings__input">
           <p>Use Fahrenheit</p>
-          <div class="checkbox-wrapper">
+          <div className="checkbox-wrapper">
             <input
-            className="checkbox"
+              className="checkbox"
               type="checkbox"
               id="chb-fahrenheit"
               checked={useFahrenheit}
               onChange={(e) => {
-                setUseFahrenheit(e.target.checked);
+                setUseFahrenheit(!useFahrenheit);
                 setSettingValues();
               }}
             />
-            <label for="chb-fahrenheit" class="toggle">
+            <label htmlFor="chb-fahrenheit" className="toggle">
               <span></span>
             </label>
           </div>
@@ -77,11 +77,11 @@ function Setting({ hideSettings }) {
               id="chb-metric"
               checked={useMetricSystem}
               onChange={(e) => {
-                setUseMetricSystem(e.target.checked);
+                setUseMetricSystem(!useMetricSystem);
                 setSettingValues();
               }}
             />
-            <label for="chb-metric" class="toggle">
+            <label htmlFor="chb-metric" className="toggle">
               <span></span>
             </label>
           </div>

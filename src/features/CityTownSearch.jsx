@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
 import { searchCitiesTowns } from "../api/weatherService";
 import City from "../components/City";
-import { SettingsContext } from "../contexts/SettingsContext";
 import { setSearchCityLocation } from "../functions/location";
+import { SearchContext } from "../contexts/SearchContext";
 
 function CityTownSearch() {
   const [searchTerm, setSearchTerm] = useState("");
   const [cities, setCities] = useState([]);
   const [showResult, setShowResult] = useState(true);
 
-  const { handleSearchRefetch } = useContext(SettingsContext);
+  const { handleSearchRefetch } = useContext(SearchContext);
 
   const handleInputChange = async (e) => {
     setShowResult(true);
