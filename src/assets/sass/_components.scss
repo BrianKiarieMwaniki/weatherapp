@@ -71,6 +71,7 @@
     display: flex;
     flex-direction: column;
     padding: 2rem 4rem;
+    padding-bottom: .5rem;
 
     @media (max-width: 767px) {
       padding: 1rem 2rem;
@@ -82,6 +83,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin-bottom: 1.4rem;
     & .info {
       float: left;
       display: flex;
@@ -211,14 +213,14 @@
 .forecastday {
   color: var(--font-color);
   position: relative;
-  padding-bottom: 1rem;
+  padding-bottom: 0.25rem;
   &__date {
     font-family: "Malonet";
     font-size: 2rem;
   }
 
   &__condition {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     padding-bottom: 0;
     & .temp {
       display: flex;
@@ -285,8 +287,9 @@
 .forecast-period {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   justify-content: center;
+  letter-spacing: 0.125rem;
 
   & .name {
     font-size: 1.6rem;
@@ -494,10 +497,56 @@
   position: relative;
 
   &__input {
-    width: 40%;
+    &-group {
+      display: inline-block;
+      width: 40%;
+      position: relative;
 
-    @media (max-width: 1024px) {
-      width: 80%;
+      @media (max-width: 1024px) {
+        width: 80%;
+      }
+    }
+
+    &-control {
+      width: 100%;
+      font-size: 1.5rem;
+      font-family: inherit;
+      color:  #6d6d6d;
+      padding: 1rem 0.75rem;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border: none;
+      border-bottom: 3px solid transparent;
+      display: block;
+      transition: all 0.3s;
+      caret-color: var(--color-primary);
+      caret-shape: block;
+      margin: 0 auto;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        border-bottom: 3px solid var(--color-secondary);
+      }
+
+      &:focus:invalid {
+        border-bottom: 3px solid var(--color-accent);
+      }
+
+      &::-webkit-input-placeholder {
+        color: #6d6d6d;
+      }
+    }
+
+    &-icon {
+      fill: var(--color-accent);
+      height: 2.25rem;
+      width: 2.25rem;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
     }
   }
 
@@ -527,6 +576,8 @@
 .city {
   display: flex;
   flex-wrap: nowrap;
+  color: #000;
+  cursor: pointer; 
 
   @media (max-width: 481px) {
     flex-direction: column;
@@ -561,6 +612,7 @@
 
   &__name {
     font-size: 2rem;
+    color: #424242;
     @media (max-width: 481px) {
       font-size: 1.6rem;
     }
@@ -570,6 +622,8 @@
     font-size: 1.3rem;
     font-weight: 300;
     font-style: italic;
+    color: #424242;
+  
 
     @media (max-width: 481px) {
       font-size: 1.1rem;
@@ -580,6 +634,7 @@
     align-self: center;
     font-size: 1.8rem;
     font-weight: 400;
+    color: #424242;
     float: bottom;
 
     position: absolute;
@@ -590,4 +645,11 @@
       font-size: 1.5rem;
     }
   }
+
+  &:hover &__name,
+  &:hover &__region, 
+  &:hover &__country{
+    color: var(--color-accent);
+  }
+
 }

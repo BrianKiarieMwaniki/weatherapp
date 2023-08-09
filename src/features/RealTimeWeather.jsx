@@ -29,7 +29,7 @@ export const RealTimeWeather = (props) => {
         <div className="real-time__location">
          <div className="info">
             <p>{name},</p>
-            <p>{region},</p>
+            {region && <p>{region},</p>}
             <p>{country}</p>
          </div>
          <div className="input-box">
