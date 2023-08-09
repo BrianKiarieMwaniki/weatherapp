@@ -6,7 +6,7 @@ import { RealTimeWeather } from "../features/RealTimeWeather";
 import { useQuery } from "react-query";
 import { calculateTimeUntilNextPoll } from "../functions/polling";
 import { Forecast } from "../features/Forecast";
-import { SettingsContext } from "../contexts/SettingsContext";
+import { SearchContext } from './../contexts/SearchContext';
 
 export const Home = () => {
   const [showLocationPopup, setShowLocationPopup] = useState(false);
@@ -51,12 +51,12 @@ export const Home = () => {
   const currentView = showLocationPopup ? (
     <LocationPopup onCancel={handlePopupClose} onAllow={handlePopupAccept} />
   ) : (
-    <SettingsContext.Provider value={{ handleSearchRefetch }}>
+    <SearchContext.Provider value={{ handleSearchRefetch }}>
       <React.Fragment>
         <RealTimeWeather location={location} currentWeather={current} />
         <Forecast forecast={forecast} />
       </React.Fragment>
-    </SettingsContext.Provider>
+    </SearchContext.Provider>
   );
 
   return <div className="home">{currentView}</div>;

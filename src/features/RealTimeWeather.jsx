@@ -3,8 +3,7 @@ import { getTodaysDate } from "../functions/date";
 import { SettingsContext } from "../contexts/SettingsContext";
 import CityTownSearch from "./CityTownSearch";
 
-export const RealTimeWeather = (props) => {
-  
+export const RealTimeWeather = (props) => {  
   const {location, currentWeather: current} = props;
   const {useMetricSystem, useFahrenheit} = useContext(SettingsContext);
 
