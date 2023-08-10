@@ -21,7 +21,7 @@ function Setting({ hideSettings }) {
         await animate(
           scope.current,
           { opacity: 1, x: 10 },
-          { duration: 0.8, ease: "easeIn", delay: 0 }
+          { duration: 1, ease: "easeIn", delay: 0 }
         );
       };
       enterAnimation();

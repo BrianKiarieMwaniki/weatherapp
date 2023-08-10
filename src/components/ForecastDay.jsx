@@ -29,7 +29,7 @@ export const ForecastDay = (props) => {
 
   return (
     <React.Fragment>
-      <div className="forecastday">
+      <div className="forecastday" onClick={() => setShowPeriods(!showPeriods)}>
         {!isToday && (
           <React.Fragment>
             <div className="forecastday__date">{getFormattedDate(date)}</div>
@@ -51,8 +51,12 @@ export const ForecastDay = (props) => {
             </div>
 
             {!isToday && (
-              <button type="submit" className="forecastday__periods-btn" onClick={() => setShowPeriods(!showPeriods)}>
-                <svg className={`icon ${periodsShown ? 'rotate': ''}`}>
+              <button
+                type="submit"
+                className="forecastday__periods-btn"
+                onClick={() => setShowPeriods(!showPeriods)}
+              >
+                <svg className={`icon ${periodsShown ? "rotate" : ""}`}>
                   <use xlinkHref="/symbols.svg#icon-arrow-down"></use>
                 </svg>
               </button>
