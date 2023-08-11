@@ -7,6 +7,7 @@ import { useQuery } from "react-query";
 import { calculateTimeUntilNextPoll } from "../functions/polling";
 import { Forecast } from "../features/Forecast";
 import { SearchContext } from './../contexts/SearchContext';
+import { Spinner } from "../components/Spinner";
 
 export const Home = () => {
   const [showLocationPopup, setShowLocationPopup] = useState(false);
@@ -21,13 +22,13 @@ export const Home = () => {
     return await getWeatherForecast(latitude, longitude, 7);
   };
 
-  const { data, refetch, isFetched } = useQuery("forecast", fetchForecast, {
+  const { data, refetch, isFetched, isLoading } = useQuery("forecast", fetchForecast, {
     refetchInterval: () => calculateTimeUntilNextPoll(),
     refetchOnMount:true,    
   });
 
-  if (!isFetched) {
-    return <div>Error</div>;
+  if (!isFetched || isLoading) {
+    return <Spinner/>;
   }
 
   const { location, current, forecast} = data;
@@ -59,5 +60,7 @@ export const Home = () => {
     </SearchContext.Provider>
   );
 
-  return <div className="home">{currentView}</div>;
+   return <div className="home">{currentView}</div>;
+
+ 
 };

@@ -60,7 +60,7 @@
 .real-time {
   display: flex;
   font-family: "Lato", sans-serif;
-  color: var(--font-color);
+  color: rgba(var(--font-color));
 
   @media (max-width: 1024px) {
     flex-direction: column;
@@ -102,7 +102,7 @@
     }
 
     & .input-box {
-      flex: 1;
+      flex: 1;    
     }
   }
   &__date {
@@ -211,9 +211,10 @@
 }
 
 .forecastday {
-  color: var(--font-color);
+  color: rgba(var(--font-color));
   position: relative;
   padding-bottom: 0.25rem;
+  cursor: pointer;
   &__date {
     font-family: "Malonet";
     font-size: 2rem;
@@ -256,7 +257,7 @@
     background-color: transparent;
 
     & .icon {
-      fill: var(--font-color);
+      fill: rgb(var(--font-color));
       height: 2.25rem;
       width: 2.25rem;
       cursor: pointer;
@@ -344,7 +345,7 @@
   top: 0;
   height: 100%;
   width: 32rem;
-  background-color: var(--font-color);
+  background-color: rgb(var(--font-color));
 
   display: flex;
   flex-direction: column;
@@ -389,7 +390,7 @@
     &-open {
       position: absolute;
       fill: var(--color-accent);
-      background-color: var(--font-color);
+      background-color: rgb(var(--font-color));
       z-index: 10;
       top: 3rem;
       right: 2rem;
@@ -556,7 +557,7 @@
     border-radius: 4px;
     width: 40%;
     box-shadow: var(--shadow-1);
-    background-color: var(--font-color);
+    background-color: rgba(var(--font-color), 0.85);
     color: #000;
     position: absolute;
     z-index: 8;

@@ -1,6 +1,4 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import "./App.css";
-import "./assets/sass/main.scss";
 import { Home } from "./pages/Home";
 import { SettingsContext } from "./contexts/SettingsContext";
 import React, { useEffect, useState } from "react";

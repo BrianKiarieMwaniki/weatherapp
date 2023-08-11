@@ -20,7 +20,7 @@ export const RealTimeWeather = (props) => {
   } = current;
 
   const { name, region, country } = location;
-  const { description, icon } = condition;
+  const { text:description, icon } = condition;
 
   return (
     <div className="real-time">
